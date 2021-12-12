@@ -17,13 +17,13 @@ public class Student {
 	String name;
 	@Setter
 	String password;
-	Map<String, Integer> scores;
+	Map<String, Integer> scores = new HashMap<>();
 
 	public Student(int id, String name, String password) {
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		scores = new HashMap<>();
+//		scores = new HashMap<>();
 	}
 	
 	public boolean addScore(String exam, int score) {
