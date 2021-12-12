@@ -1,5 +1,7 @@
 package telran.b7a.student.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,6 +29,11 @@ public class StudentRepositoryImpl implements StudentRepository {
 	@Override
 	public Student deleteStudent(int id) {
 		return students.remove(id);
+	}
+
+	@Override
+	public List<Student> findAll() {
+		return new ArrayList<>(students.values());
 	}
 
 }
