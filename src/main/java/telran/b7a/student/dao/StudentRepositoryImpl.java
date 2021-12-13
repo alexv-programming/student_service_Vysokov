@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import telran.b7a.student.model.Student;
 
-@Repository
+//@Repository
 public class StudentRepositoryImpl implements StudentRepository {
 	Map<Integer, Student> students = new ConcurrentHashMap<>();//multithreding hashMap
 
