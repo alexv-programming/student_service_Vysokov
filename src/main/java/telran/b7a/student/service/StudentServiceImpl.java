@@ -93,10 +93,27 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public List<StudentDto> findStudentsByName(String name) {
-		return studentRepository.findAll().stream()
-										.filter(s -> name.equalsIgnoreCase(s.getName()))
-										.map(s -> modelMapper.map(s, StudentDto.class))
-										.collect(Collectors.toList());
+		return //studentRepository.findAll()
+				//				.stream()
+			studentRepository
+//								.findBy()
+								.findByNameIgnoreCase(name)//.toLowerCase())
+//								.filter(s -> name.equalsIgnoreCase(s.getName()))
+								.map(s -> modelMapper.map(s, StudentDto.class))
+								.collect(Collectors.toList());
+	}
+
+	@Override
+	public long getStudentsNamesQuantity(List<String> names) {
+		return studentRepository.countByNameInIgnoreCase(names);
+	}
+
+	@Override
+	public List<StudentDto> getStudentsByExamScore(String exam, int score) {
+		return studentRepository
+				.findByExamAndScoreGreaterEqualsThan(exam, score)
+				.map(s -> modelMapper.map(s, StudentDto.class))
+				.collect(Collectors.toList());
 	}
 
 }
